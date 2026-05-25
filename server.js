@@ -155,18 +155,20 @@ app.delete('/students/:id', (req, res) => {
   }
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`===========================================`);
-  console.log(`Student Management API Server Running`);
-  console.log(`Server is listening on http://localhost:${PORT}`);
-  console.log(`===========================================`);
-  console.log(`Available Endpoints:`);
-  console.log(`GET    /students       - Fetch all students`);
-  console.log(`POST   /students       - Add a new student`);
-  console.log(`PUT    /students/:id   - Update student details`);
-  console.log(`DELETE /students/:id   - Delete a student`);
-  console.log(`===========================================`);
-});
+// Start server only when running directly
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`===========================================`);
+    console.log(`Student Management API Server Running`);
+    console.log(`Server is listening on http://localhost:${PORT}`);
+    console.log(`===========================================`);
+    console.log(`Available Endpoints:`);
+    console.log(`GET    /students       - Fetch all students`);
+    console.log(`POST   /students       - Add a new student`);
+    console.log(`PUT    /students/:id   - Update student details`);
+    console.log(`DELETE /students/:id   - Delete a student`);
+    console.log(`===========================================`);
+  });
+}
 
 module.exports = app;
